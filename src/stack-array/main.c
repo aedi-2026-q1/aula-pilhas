@@ -10,7 +10,7 @@ int main() {
     stack_push(stack, 3);
 
     stack_print(stack);
-    printf("Stack size: %d\n", stack_size(stack));
+    printf("Stack size: %zu\n", stack_size(stack));
 
     printf("Stack peek: ");
     element_print(stack_peek(stack));
@@ -22,7 +22,7 @@ int main() {
     stack_print(stack);
 
 
-    printf("Stack size: %d\n", stack_size(stack));
+    printf("Stack size: %zu\n", stack_size(stack));
 
     stack_destroy(stack);
 

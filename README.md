@@ -2,22 +2,20 @@
 
 Projeto base da aula de pilhas (LIFO).
 
-O codigo ja inclui:
-- tipo de elemento (`Element`) definido como `int`.
-- funcoes utilitarias para elemento.
-- contrato (interface) da pilha em `stack.h`.
-- `main.c` com exemplo de uso da API da pilha.
-
 ## Estrutura
 
 ```
 .
 ├── README.md
 ├── src/
-│   ├── element.c
-│   ├── element.h
-│   ├── main.c
-│   └── stack.h
+│   ├── stack-array/
+│   │   ├── Makefile
+│   │   ├── element.c
+│   │   ├── element.h
+│   │   ├── main.c
+│   │   └── stack.h
+│   └── stack-linked-list/
+│       └── README.md
 └── .devcontainer/
     ├── Dockerfile
     └── devcontainer.json
@@ -40,18 +38,28 @@ Se a implementacao da pilha ainda nao existir no seu repositorio (por exemplo, e
 
 ## Compilacao
 
-No diretorio do projeto:
+Navigate to the stack-array directory and use the Makefile:
 
 ```bash
-mkdir -p build
-clang -Wall -Wextra -pedantic \
-    -o build/app src/main.c src/element.c src/stack.c
+cd src/stack-array
+make
 ```
+
+This compiles all source files and creates the executable at `build/main`.
+
+Available make targets:
+- `make` or `make all` - Builds the complete application
+- `make main` - Compiles main.o
+- `make stack` - Compiles stack.o
+- `make element` - Compiles element.o
+- `make clean` - Removes build artifacts
 
 ## Execucao
 
+From the stack-array directory:
+
 ```bash
-./build/app
+./build/main
 ```
 
 ## Ambiente de desenvolvimento (opcional)
