@@ -1,6 +1,6 @@
 # Aula: Pilhas
 
-Projeto base da aula de pilhas (LIFO).
+Projeto final da aula de pilhas (LIFO).
 
 ## Estrutura
 
@@ -13,62 +13,43 @@ Projeto base da aula de pilhas (LIFO).
 │   │   ├── element.c
 │   │   ├── element.h
 │   │   ├── main.c
+│   │   ├── stack.c
 │   │   └── stack.h
 │   └── stack-linked-list/
-│       └── README.md
-└── .devcontainer/
-    ├── Dockerfile
-    └── devcontainer.json
+│       ├── Makefile
+│       ├── element.c
+│       ├── element.h
+│       ├── main.c
+│       ├── stack.c
+│       └── stack.h
 ```
 
-## Estado atual do projeto
+## Implementacoes
 
-`main.c` usa as funcoes abaixo da pilha:
-- `stack_create`
-- `stack_push`
-- `stack_pop`
-- `stack_peek`
-- `stack_size`
-- `stack_print`
-- `stack_destroy`
+O repositorio possui duas implementacoes de pilha:
 
-A interface dessas funcoes esta em `src/stack.h`.
+- `src/stack-array`: pilha usando array com capacidade fixa.
+- `src/stack-linked-list`: pilha usando lista encadeada.
 
-Se a implementacao da pilha ainda nao existir no seu repositorio (por exemplo, em `src/stack.c`), o projeto nao vai linkar ate essa parte ser implementada.
+Em ambas, os programas de exemplo em `main.c` exercitam operacoes de criacao, insercao, remocao, consulta de topo e impressao.
 
-## Compilacao
+### Interface da pilha
 
-Navigate to the stack-array directory and use the Makefile:
+- `stack_create(void)` ou `stack_create(size_t capacity)`
+- `stack_destroy(Stack* stack)`
+- `stack_push(Stack* stack, Element value)`
+- `stack_pop(Stack* stack)`
+- `stack_peek(Stack* stack)`
+- `stack_is_empty(Stack* stack)`
+- `stack_size(Stack* stack)`
+- `stack_print(Stack* stack)`
+
+## Compilacao e execucao
+
+Cada implementacao possui um `Makefile` para facilitar a compilacao. Para compilar e executar a pilha usando array:
 
 ```bash
 cd src/stack-array
-make
-```
-
-This compiles all source files and creates the executable at `build/main`.
-
-Available make targets:
-- `make` or `make all` - Builds the complete application
-- `make main` - Compiles main.o
-- `make stack` - Compiles stack.o
-- `make element` - Compiles element.o
-- `make clean` - Removes build artifacts
-
-## Execucao
-
-From the stack-array directory:
-
-```bash
-./build/main
-```
-
-## Ambiente de desenvolvimento (opcional)
-
-O projeto inclui configuracao de Dev Container em `.devcontainer/` baseada em Alpine Linux, com `clang` e `valgrind`.
-
-Para usar localmente com Docker:
-
-```bash
-docker build -t aed-i-c -f .devcontainer/Dockerfile .
-docker run --rm -it -v "$PWD":/work -w /work aed-i-c
+make main
+./main
 ```
